@@ -46,7 +46,8 @@ class ProjectController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
         ]);
-        $request->user()->projects()->create([
+        Project::create([
+            'user_id' => $request->user()->id,
             'title' => $validated['title'],
             'description' => $validated['description'],
             'status' => 'in_progress'
